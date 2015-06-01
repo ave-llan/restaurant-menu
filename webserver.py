@@ -1,10 +1,12 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import cgi
+import database_setup
+
 
 class webserverHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         try:
-            if self.path.endswith("/hello"):
+            if self.path.endswith("/restaurants"):
                 self.send_response(200)
                 self.send_header('Content-type', 'text/html')
                 self.end_headers()
@@ -12,21 +14,6 @@ class webserverHandler(BaseHTTPRequestHandler):
                 output = ""
                 output += "<html><body>"
                 output += "Hello!"
-                output += """<form method='POST' enctype='multipart/form-data' action='/
-                    hello'><h2>What would you like me to say?</h2><input name='message' 
-                    type='text' ><input type='submit' value='Submit'> </form>"""
-                output += "</body></html>"
-                self.wfile.write(output)
-                print output
-                return
-            if self.path.endswith("/hola"):
-                self.send_response(200)
-                self.send_header('Content-type', 'text/html')
-                self.end_headers()
-
-                output = ""
-                output += "<html><body>"
-                output += "&#161Hola!  <a href = '/hello' >Back to Hello</a>"
                 output += """<form method='POST' enctype='multipart/form-data' action='/
                     hello'><h2>What would you like me to say?</h2><input name='message' 
                     type='text' ><input type='submit' value='Submit'> </form>"""

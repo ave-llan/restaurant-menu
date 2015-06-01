@@ -21,10 +21,15 @@ class webserverHandler(BaseHTTPRequestHandler):
                 self.end_headers()
 
                 output = ""
-                output += "<html><body>"
+                output += "<html><body><ul>"
                 for restaurant in session.query(Restaurant).all():
-                    output += "<p>%s</p>" %restaurant.name
-                output += "</body></html>"
+                    output += "<p>"
+                    output += restaurant.name + "<br>"
+                    output += "<a href='edit'>Edit</a><br>"
+                    output += "<a href='delete'>Delete</a><br>"
+                    output += "</p>"
+
+                output += "</ul></body></html>"
                 self.wfile.write(output)
                 print output
                 return

@@ -140,15 +140,14 @@ class webserverHandler(BaseHTTPRequestHandler):
 
 
             if self.path.endswith("/delete"):
-                ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
-
                 # get id from path    
                 restaurant_id = self.path.split("/")[2]
 
                 # Find and delete the Restaurant
                 restaurant = session.query(Restaurant).filter_by(id = restaurant_id)[0]
-                session.delete(restaurant)
-                session.commit()
+                if restaurant != [] :
+                    session.delete(restaurant)
+                    session.commit()
 
                 self.send_response(301)
                 self.send_header('Content-type', 'text/html')

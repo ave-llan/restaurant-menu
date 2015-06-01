@@ -28,7 +28,8 @@ class webserverHandler(BaseHTTPRequestHandler):
                     output += "<a href='edit'>Edit</a><br>"
                     output += "<a href='delete'>Delete</a><br>"
                     output += "</p>"
-
+                output += "<p><a href='create_restaurant'>"
+                output += "Make a new restaurant here</a></p>"
                 output += "</ul></body></html>"
                 self.wfile.write(output)
                 print output

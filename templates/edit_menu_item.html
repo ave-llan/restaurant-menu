@@ -9,6 +9,7 @@
 	<input type='text' size='30' placeholder= '{{item.name}}' name='newName'>
 
 	<input type='submit' value='Save'>
+    <a href="{{url_for('restaurantMenu', restaurant_id = item.restaurant_id)}}">Cancel</a>
 
 </form>
 

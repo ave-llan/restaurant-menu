@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, url_for
 app = Flask(__name__)
 
 ## import CRUD Operations ##
@@ -17,18 +17,7 @@ session = DBSession()
 def restaurantMenu(restaurant_id):
 	restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
 	items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id)
-	output = ''
-	output += '<h1>%s</h1>' % restaurant.name
-	output += '<ul>'
-	for i in items:
-		output += '<li>'
-		output += i.name + '</br>'
-		output += i.price + '</br>'
-		output += i.description + '</br></br>'
-		output += '</li>'
-	output += '</ul>'
-	return output
-
+	return render_template('menu.html', restaurant=restaurant, items = items)
 
 
 @app.route('/restaurants/<int:restaurant_id>/new/')

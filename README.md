@@ -1,1 +1,1 @@
-Simple project to learn how to set up a Python HTTP server and perform CRUD operations on a SQL database.
+A full stack application that display restaurant menus and allows users to create, edit, and delete menu items. Data is stored in a SQL database.
